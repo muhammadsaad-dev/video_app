@@ -1,17 +1,11 @@
-
 from fastapi import FastAPI
-from api.v1.endpoints import users
-from database import engine
-from models import Base
+from backend.api.v1.endpoints import users  # Add backend.
+from backend.database import engine         # Add backend.
+from backend.models import Base             # Add backend.
 
-# Create tables (only if you're not using Alembic for migrations yet)
+# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Video Sharing Platform API")
 
-# Include Routers
 app.include_router(users.router, prefix="/users", tags=["users"])
-
-@app.get("/")
-def root():
-    return {"message": "Welcome to the Video API"}

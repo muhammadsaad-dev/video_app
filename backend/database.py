@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
-from config import settings # Ensure the relative import matches your structure
+from backend.config import settings # Ensure the relative import matches your structure
 
 db_name = settings.DB_NAME
 db_host = settings.DB_HOST

@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
-from models.user import User
-from models.video import Video
-from models.follows import Follow
-from models.likes import likes
+from backend.models.user import User
+from backend.models.video import Video
+from backend.models.follows import Follow
+from backend.models.likes import likes
 
 def toggle_like(db: Session, user_id: UUID, video_id: UUID):
     """Adds or removes a like from a video."""

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
-from models.comment import Comment
-from schemas.comment import CommentCreate
+from backend.models.comment import Comment
+from backend.schemas.comment import CommentCreate
 
 def create_comment(db: Session, comment_in: CommentCreate, author_id: UUID):
     """Saves a comment and links it to both the video and the author."""

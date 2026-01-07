@@ -2,7 +2,7 @@ from pydantic import BaseModel, HttpUrl, Field, ConfigDict
 from typing import Optional
 from uuid import UUID
 from datetime import datetime
-from ..models.video import VideoStatus # Import the Enum you created earlier
+from backend.models.video import VideoStatus
 
 # Shared attributes for Videos
 class VideoBase(BaseModel):

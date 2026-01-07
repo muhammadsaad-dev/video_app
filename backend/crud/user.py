@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
 from passlib.context import CryptContext
-from models.user import User
-from schemas.user import UserCreate, UserUpdate
+from backend.models.user import User
+from backend.schemas.user import UserCreate, UserUpdate
+from passlib.context import CryptContext
 
 # Setup password hashing context
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -46,3 +47,14 @@ def update_user(db: Session, db_user: User, user_in: UserUpdate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+def authenticate(db: Session, email: str, password: str):
+    user = get_user_by_email(db, email=email)
+    if not user:
+        return None
+    # Verify the plain password against the stored hash
+    if not pwd_context.verify(password, user.password_hash):
+        return None
+    return user

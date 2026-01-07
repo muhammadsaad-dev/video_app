@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from uuid import UUID
-from models.video import Video
-from schemas.video import VideoCreate, VideoUpdate
+from backend.models.video import Video
+from backend.schemas.video import VideoCreate, VideoUpdate
 
 def create_video(db: Session, video_in: VideoCreate):
     """Creates a video record linked to an author."""
